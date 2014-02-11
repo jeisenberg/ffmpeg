@@ -8,7 +8,11 @@
 include_recipe "build-essential"
 include_recipe "git"
 
-ffmpeg_packages.each do |pkg|
+flags_for_purge = node['ffmpeg']['compile_flags'].reject do |flag| 
+    ["--enable-libx264"].include?(flag)
+end
+
+find_prerequisite_packages_by_flags(flags_for_upgrade).each do |pkg|
     package pkg do
         action :purge
     end

@@ -19,7 +19,7 @@ find_prerequisite_packages_by_flags(flags_for_upgrade).each do |pkg|
 end
 
 #include_recipe "x264::source"
-include_recipe "libvpx::source"
+#include_recipe "libvpx::source"
 
 yasm_package = value_for_platform(
     [ "ubuntu" ] => { "default" => "yasm" },
